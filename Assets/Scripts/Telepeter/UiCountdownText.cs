@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class UiCountdownText : MonoBehaviour
 {
+    public int maxTextLineLength = 6;
 
     private TextMeshProUGUI textMesh;
     private Telepeter telepeter;
@@ -21,7 +22,17 @@ public class UiCountdownText : MonoBehaviour
     void Update()
     {
         if (textMesh != null && telepeter != null) {
-            textMesh.text = telepeter.remainingTime.ToString(); 
+            string countdownText = TruncateString(telepeter.remainingTime.ToString(), maxTextLineLength);
+            string iterationText = TruncateString(telepeter.currentIteration.ToString(), maxTextLineLength);
+            textMesh.text = countdownText + "\n" + iterationText;
         }
+    }
+
+
+    private string TruncateString(string input, int maxLength) {
+        if(input.Length > maxLength) {
+            return input.Substring(0, maxLength);
+        }
+        return input;
     }
 }
