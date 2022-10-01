@@ -1,0 +1,10 @@
+{
+    "files.exclude": {
+        "**/*.meta": true,
+        "Library/**": true,
+        "obj/**": true,
+        "Temp/**": true,
+        "ProjectSettings/**": true,
+        "UserSettings/**": true,
+    }
+}
