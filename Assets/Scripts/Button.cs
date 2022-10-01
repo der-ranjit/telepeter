@@ -7,7 +7,7 @@ public class Button : Interactable
     public delegate void Activate(GameObject obj);
     public event Activate onActivate;
     
-    public override void Interact() {
+    public override void Interact(GameObject other) {
         Debug.Log("Buttoned!");
         if (onActivate != null) {
             Debug.Log("Activated!");
