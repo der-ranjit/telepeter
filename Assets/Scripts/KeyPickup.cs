@@ -7,6 +7,8 @@ public class KeyPickup : Interactable
     // public GameObject target;
     private GameObject carrier = null;
 
+    private int enableInTicks = 0;
+
     public void Start() {
     }
 
@@ -22,6 +24,12 @@ public class KeyPickup : Interactable
         if (this.carrier != null) {
             this.PlaceOnTopOfCarrier();
         }
+        if (this.enableInTicks > 0) {
+            this.enableInTicks--;
+            if (this.enableInTicks <= 0) {
+                this.disabled = false;
+            }
+        }
     }
     
     public override void Interact(GameObject other) {
@@ -34,10 +42,9 @@ public class KeyPickup : Interactable
         if (this.carrier == null) {
             return;
         }
-        Debug.Log("Drop!!!");
-        this.disabled = false;
+        this.enableInTicks = 30;
         this.GetComponent<BoxCollider2D>().enabled = true;
-        this.PlaceOnTopOfCarrier(0.3f);
+        this.PlaceOnTopOfCarrier(0.2f);
         this.GetComponent<Rigidbody2D>().velocity = this.carrier.GetComponent<Rigidbody2D>().velocity + new Vector2(0, 5);
         this.carrier = null;
     }
