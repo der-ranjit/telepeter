@@ -7,12 +7,17 @@ public class Door : InteractionTarget
     public bool isOpen = false;
     public GameObject target;
 
+
     private void OnEnable() {
-        target.GetComponent<Button>().onActivate += ReactToInteraction;
+        if (target) {
+            target.GetComponent<Button>().onActivate += ReactToInteraction;
+        }
     }
 
     private void OnDisable() {
-        target.GetComponent<Button>().onActivate -= ReactToInteraction;
+        if (target) {
+            target.GetComponent<Button>().onActivate -= ReactToInteraction;
+        }
     }
 
     // Start is called before the first frame update
@@ -24,7 +29,6 @@ public class Door : InteractionTarget
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     void DoSomething() {
@@ -45,10 +49,18 @@ public class Door : InteractionTarget
     public void Open() {
         this.isOpen = true;
         Debug.Log("Opening");
+        // Animator animator = this.GetComponent<Animator>();
+        // animator.Play("doorAnimation_open");
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        this.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void Close() {
         this.isOpen = false;
         Debug.Log("Closing");
+        // Animator animator = this.GetComponent<Animator>();
+        // animator.Play("doorAnimation_close");
+        this.GetComponent<BoxCollider2D>().enabled = true;
+        this.GetComponent<SpriteRenderer>().enabled = true;
     }
 }
