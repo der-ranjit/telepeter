@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    bool disabled = false;
+    protected bool disabled = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -15,15 +15,15 @@ public class Interactable : MonoBehaviour
     {
     }
 
-    public virtual void Interact() {
+    public virtual void Interact(GameObject other) {
         Debug.Log("Unspecified interaction with player!");
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (!this.disabled) {
-            if (other.tag != "player") {
+            if (other.tag == "Player") {
                 this.disabled = true;
-                Interact();
+                Interact(other.gameObject);
             }
         }
     }
