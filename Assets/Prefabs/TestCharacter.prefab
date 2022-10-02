@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: ccf321544ce65ca4b8f80c2014912c8a, type: 2}
-  jumpHeight: 5.5
+  jumpHeight: 7.54
   maxAirJumps: 0
   jumpBuffer: 3
   coyoteTime: 2
