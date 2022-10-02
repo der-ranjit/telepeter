@@ -51,8 +51,9 @@ public class Door : InteractionTarget
         Debug.Log("Opening");
         // Animator animator = this.GetComponent<Animator>();
         // animator.Play("doorAnimation_open");
-        this.GetComponent<BoxCollider2D>().enabled = false;
-        this.GetComponent<SpriteRenderer>().enabled = false;
+        // this.GetComponent<BoxCollider2D>().enabled = false;
+        // this.GetComponent<SpriteRenderer>().enabled = false;
+        this.GetComponent<Animator>().SetBool("isOpen", true);
     }
 
     public void Close() {
@@ -60,7 +61,8 @@ public class Door : InteractionTarget
         Debug.Log("Closing");
         // Animator animator = this.GetComponent<Animator>();
         // animator.Play("doorAnimation_close");
-        this.GetComponent<BoxCollider2D>().enabled = true;
-        this.GetComponent<SpriteRenderer>().enabled = true;
+        // this.GetComponent<BoxCollider2D>().enabled = true;
+        // this.GetComponent<SpriteRenderer>().enabled = true;
+        this.GetComponent<Animator>().SetBool("isOpen", false);
     }
 }
