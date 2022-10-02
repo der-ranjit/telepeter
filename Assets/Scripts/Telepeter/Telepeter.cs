@@ -32,10 +32,16 @@ public class Telepeter : MonoBehaviour
         if (timePassed >= respawnDuration) {
             timePassed = 0;
             currentIteration++;
-            GameObject[] players = GameObject.FindGameObjectsWithTag(tagToTeleport);
-            foreach (GameObject player in players) {
-                player.transform.position = transform.position;
-            }
+            this.TeleportPlayer();
+        }
+    }
+
+    void TeleportPlayer() {
+        GameObject[] players = GameObject.FindGameObjectsWithTag(tagToTeleport);
+        Vector2 targetPos = transform.position + new Vector3(0, 2f, 0);
+        foreach (GameObject player in players) {
+            player.transform.position = targetPos;
+            player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -0.5f);
         }
     }
 }
