@@ -23,8 +23,9 @@ public class Jump : MonoBehaviour
 
     private bool desiredJump;
     private bool onGround;
-    private int jumpBufferStartFrame;
-
+    private int jumpBufferFramesLeft;
+    private int coyoteTimeFramesLeft;
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -38,7 +39,8 @@ public class Jump : MonoBehaviour
     void Update()
     {
         desiredJump |= input.RetrieveJumpInputDown();
-        
+
+
     }
 
     void FixedUpdate()
@@ -46,27 +48,38 @@ public class Jump : MonoBehaviour
         onGround = ground.GetOnGround();
         velocity = body.velocity;
         bool isJumpPressed = input.RetrieveJumpInput();
-        // int currentBufferCount = Time.frameCount - jumpBufferStartFrame;
+        
+        
+        // Coyote Time 
         if (onGround)
         {
             jumpPhase = 0;
+            coyoteTimeFramesLeft = coyoteTime;
         }
 
+        if(!onGround && coyoteTimeFramesLeft > 0){
+            // Debug.Log("coyoteTime:"+coyoteTimeFramesLeft);
+            // Debug.Log("Ground:"+onGround);
+            coyoteTimeFramesLeft -= 1;
+            onGround = true;
+        }
+
+
+        // Jump Buffer and jump action
         if (desiredJump)
         {
             desiredJump = false;
+            jumpBufferFramesLeft = jumpBuffer;
             JumpAction();
         }
-        // if (desiredJump){
-        //     jumpBufferStartFrame = Time.frameCount;
-        //     desiredJump = false;
-        //     JumpAction();
-        // } else if ( currentBufferCount <= jumpBuffer){
-        //     Debug.Log(currentBufferCount);
-        //     JumpAction();
-        // }
-        
+        if (jumpBufferFramesLeft > 0)
+        {
+            // Debug.Log("Jump Buffer:" + jumpBufferFramesLeft);
+            jumpBufferFramesLeft -= 1;
+            JumpAction();
+        }
 
+        // Variable jump height implementation
         if (isJumpPressed)
         {
             if (body.velocity.y > 0)
@@ -81,7 +94,9 @@ public class Jump : MonoBehaviour
             {
                 body.gravityScale = defaultGravityScale;
             }
-        } else {
+        }
+        else
+        {
             body.gravityScale = downwardMovementMultiplier;
         }
 
@@ -90,8 +105,12 @@ public class Jump : MonoBehaviour
 
     private void JumpAction()
     {
+        // Debug.Log("Jump Called");
         if (onGround || jumpPhase < maxAirJumps)
         {
+            // Debug.Log("Activated");
+            jumpBufferFramesLeft = 0;
+            coyoteTimeFramesLeft = 0;
             jumpPhase += 1;
             float jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * jumpHeight);
             if (velocity.y > 0f)
@@ -100,5 +119,9 @@ public class Jump : MonoBehaviour
             }
             velocity.y += jumpSpeed;
         }
+        // else
+        // {
+        //     Debug.Log("Not Activated");
+        // }
     }
 }
