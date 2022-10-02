@@ -38,6 +38,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3440108031
+    locked: 0
+  - name: Planets
+    uniqueID: 1753843593
+    locked: 0
+  - name: Asteroid
+    uniqueID: 1989105611
+    locked: 0
+  - name: BG Plants
+    uniqueID: 1630760527
+    locked: 0
+  - name: Decorations
+    uniqueID: 1544700443
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 99085741
     locked: 0
