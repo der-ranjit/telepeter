@@ -26,11 +26,7 @@ public class KeyPickup : Interactable
                     - this.target.transform.position;
                 float dis = diff.magnitude;
                 if (dis < 2) {
-                    Debug.Log("Key effect!!!");
                     this.carrier = null;
-                    Debug.Log(this.target.GetComponentInChildren<InteractionTarget>());
-                    Debug.Log(this.target.GetComponentInChildren<Door>());
-                    Debug.Log(this.gameObject);
                     this.target.GetComponentInChildren<InteractionTarget>().ReactToInteraction(this.gameObject);
                     this.disabled = true;
                     this.vanish();
