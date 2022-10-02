@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5647527267434561750}
   - component: {fileID: 5647527267434561749}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5647527267994132073}
   - component: {fileID: 5647527267994132078}
   - component: {fileID: 5647527267994132079}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Telepeter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D.IK;
 
 public class KeyPickup : Interactable
 {
-    // public GameObject target;
+    public GameObject target;
     private GameObject carrier = null;
 
     private int enableInTicks = 0;
@@ -14,8 +16,21 @@ public class KeyPickup : Interactable
 
     public void Update() {
         if (this.carrier != null) {
+            // F to drop
             if (Input.GetKeyDown(KeyCode.F)) {
                 this.drop();
+            }
+            // Close to target -> unlock it!
+            if (this.target != null) {
+                Vector2 diff = this.transform.position
+                    - this.target.transform.position;
+                float dis = diff.magnitude;
+                if (dis < 2) {
+                    this.carrier = null;
+                    this.target.GetComponentInChildren<InteractionTarget>().ReactToInteraction(this.gameObject);
+                    this.disabled = true;
+                    this.vanish();
+                }
             }
         }
     }
@@ -47,6 +62,10 @@ public class KeyPickup : Interactable
         this.PlaceOnTopOfCarrier(0.2f);
         this.GetComponent<Rigidbody2D>().velocity = this.carrier.GetComponent<Rigidbody2D>().velocity + new Vector2(0, 5);
         this.carrier = null;
+    }
+
+    public void vanish() {
+        GameObject.Destroy(this.gameObject);
     }
 
     private void PlaceOnTopOfCarrier(float offset = 0) {

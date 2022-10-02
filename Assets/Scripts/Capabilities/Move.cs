@@ -5,12 +5,13 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     [SerializeField] private InputController input = null;
-    [SerializeField, Range(0f,100f)] private float maxSpeed = 4f; 
-    [SerializeField, Range(0f,100f)] private float maxAcceleration = 35f; 
-    [SerializeField, Range(0f,100f)] private float maxAirAcceleration = 20f;
+    [SerializeField, Range(0f, 100f)] private float maxSpeed = 4f;
+    [SerializeField, Range(0f, 100f)] private float maxSlopeSpeed = 3f;
+    [SerializeField, Range(0f, 100f)] private float maxAcceleration = 35f;
+    [SerializeField, Range(0f, 100f)] private float maxAirAcceleration = 20f;
 
     private Vector2 direction;
-    private Vector2 desiredVelocity; 
+    private Vector2 desiredVelocity;
     private Vector2 velocity;
     private Rigidbody2D body;
     private Ground ground;
@@ -18,6 +19,7 @@ public class Move : MonoBehaviour
     private float maxSpeedChange;
     private float acceleration;
     private bool onGround;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -27,22 +29,57 @@ public class Move : MonoBehaviour
 
     }
 
+    bool IsOnSlope()
+    {
+        
+        bool isGround = ground.GetOnGround();
+        float slopeAngle = Vector2.Angle(Vector2.up, ground.GetNormal());
+        // Debug.Log(slopeAngle);
+        if ( slopeAngle > 10 && slopeAngle <= 45 && isGround){
+            return true;
+        }
+        return false;
+    }
+
     // Update is called once per frame
     void Update()
     {
         direction.x = input.RetrieveMoveInput();
-        desiredVelocity = new Vector2(direction.x,0f) * Mathf.Max(maxSpeed - ground.GetFriction(), 0);
 
+        if (IsOnSlope())
+        {
+            Vector2 groundNormal = ground.GetNormal();
+            Vector2 slopeDirection = Vector2.up - groundNormal * Vector2.Dot(Vector2.up, groundNormal);
+
+            desiredVelocity = new Vector2(direction.x,slopeDirection.y) * Mathf.Max(maxSlopeSpeed - ground.GetFriction(), 0);
+            // Debug.Log("DesiredVel"+desiredVelocity);
+        } else {
+            desiredVelocity = new Vector2(direction.x, 0) * Mathf.Max(maxSpeed - ground.GetFriction(), 0);
+            
+        }
     }
 
-    void FixedUpdate(){
+
+    void FixedUpdate()
+    {
         onGround = ground.GetOnGround();
         velocity = body.velocity;
+
+        acceleration = onGround ? maxAcceleration : maxAirAcceleration;
+        maxSpeedChange = acceleration * Time.deltaTime;
         
-        acceleration = onGround ? maxAcceleration: maxAirAcceleration;
-        maxSpeedChange = acceleration* Time.deltaTime;
-        velocity.x = Mathf.MoveTowards(velocity.x,desiredVelocity.x, maxSpeedChange);
+        
+        if (IsOnSlope())
+        {
+            velocity.x = Mathf.MoveTowards(velocity.x,desiredVelocity.x,maxSpeedChange);
+            velocity.y = Mathf.MoveTowards(velocity.y,desiredVelocity.y,maxSpeedChange);
+            // Debug.Log("SlopeVelocity"+velocity);
+        } else {
+            velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
+            // Debug.Log("GroundVelocity"+velocity);
+        }
 
         body.velocity = velocity;
     }
+
 }

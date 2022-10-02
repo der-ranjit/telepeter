@@ -36,8 +36,8 @@ public class Door : InteractionTarget
     }
 
     public override void ReactToInteraction(GameObject obj) {
-        Debug.Log(obj);
-        if (obj == target) {
+        Debug.Log("Door opening due to " + obj);
+        if (obj == target || target == null) {
             if (this.isOpen) {
                 this.Close();
             } else {
