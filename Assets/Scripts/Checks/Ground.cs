@@ -6,6 +6,8 @@ public class Ground : MonoBehaviour
 {
     private bool onGround;
     private float friction;
+    private Vector2 normal;
+    private Vector2 right;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -28,7 +30,7 @@ public class Ground : MonoBehaviour
     {
         for (int i = 0; i < collision.contactCount; i++)
         {
-            Vector2 normal = collision.GetContact(i).normal;
+            normal = collision.GetContact(i).normal;
             onGround |= normal.y >= 0.5f;
 
         }
@@ -53,5 +55,10 @@ public class Ground : MonoBehaviour
     public float GetFriction()
     {
         return friction;
+    }
+
+    public Vector2 GetNormal()
+    {
+        return normal;
     }
 }

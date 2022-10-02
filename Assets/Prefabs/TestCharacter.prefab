@@ -263,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: ccf321544ce65ca4b8f80c2014912c8a, type: 2}
   maxSpeed: 25
+  maxSlopeSpeed: 22
   maxAcceleration: 45
   maxAirAcceleration: 50
 --- !u!114 &6426540798879151361
@@ -290,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: ccf321544ce65ca4b8f80c2014912c8a, type: 2}
-  jumpHeight: 7.54
+  jumpHeight: 5.39
   maxAirJumps: 0
   jumpBuffer: 3
   coyoteTime: 2

@@ -24,16 +24,4 @@ public class PlayerController : InputController
         return Input.GetAxisRaw("Horizontal");
     }
 
-    //Fixed Update is called once per frame useful for physics updates
-    void FixedUpdate()
-    {
-
-        float _horizontalInput = Input.GetAxis("Horizontal");
-        float _verticalInput = Input.GetAxis("Vertical");
-        
-        Vector2 _direction = new Vector2(_horizontalInput,_verticalInput).normalized;
-        Debug.Log(_direction);
-        playerRigidBody.velocity +=  _direction * velocity * Time.deltaTime;
-       
-    }
 }
