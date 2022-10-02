@@ -25,6 +25,12 @@ public class Jump : MonoBehaviour
     private bool onGround;
     private int jumpBufferFramesLeft;
     private int coyoteTimeFramesLeft;
+
+    
+    public bool isJetpack = false;
+    [SerializeField, Range(0f, -1f)] private float upwardJetpackMultiplier = -0.5f;
+
+
     
     // Start is called before the first frame update
     void Awake()
@@ -69,6 +75,10 @@ public class Jump : MonoBehaviour
         if (desiredJump)
         {
             desiredJump = false;
+            if (isJetpack && onGround){
+                // Debug.Log("Jetpack Thrust");
+                body.gravityScale = -2.0f;
+            }
             jumpBufferFramesLeft = jumpBuffer;
             JumpAction();
         }
@@ -84,11 +94,11 @@ public class Jump : MonoBehaviour
         {
             if (body.velocity.y > 0)
             {
-                body.gravityScale = upwardMovementMultiplier;
+                body.gravityScale = !isJetpack? upwardMovementMultiplier: upwardJetpackMultiplier;
             }
             else if (body.velocity.y < 0)
             {
-                body.gravityScale = downwardMovementMultiplier;
+                body.gravityScale = !isJetpack? downwardMovementMultiplier: upwardJetpackMultiplier;
             }
             else if (body.velocity.y == 0)
             {
@@ -106,7 +116,7 @@ public class Jump : MonoBehaviour
     private void JumpAction()
     {
         // Debug.Log("Jump Called");
-        if (onGround || jumpPhase < maxAirJumps)
+        if (onGround || jumpPhase < maxAirJumps || isJetpack )
         {
             // Debug.Log("Activated");
             jumpBufferFramesLeft = 0;
