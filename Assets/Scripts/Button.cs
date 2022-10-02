@@ -12,6 +12,7 @@ public class Button : Interactable
         if (onActivate != null) {
             Debug.Log("Activated!");
             onActivate(gameObject);
+            this.GetComponent<Animator>().SetBool("isActive", true);
         }
     }
 }
