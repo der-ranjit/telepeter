@@ -182,6 +182,34 @@ PrefabInstance:
       propertyPath: m_DynamicOccludee
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7066665007488772286, guid: 17be308e50cff3f43ab2b3379407a421, type: 3}
+      propertyPath: m_LocalAABB.m_Center.x
+      value: 2.6045108
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066665007488772286, guid: 17be308e50cff3f43ab2b3379407a421, type: 3}
+      propertyPath: m_LocalAABB.m_Center.y
+      value: 0.16292739
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066665007488772286, guid: 17be308e50cff3f43ab2b3379407a421, type: 3}
+      propertyPath: m_LocalAABB.m_Extent.x
+      value: 6.7655425
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066665007488772286, guid: 17be308e50cff3f43ab2b3379407a421, type: 3}
+      propertyPath: m_LocalAABB.m_Extent.y
+      value: 1.0947771
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066665007488772287, guid: 17be308e50cff3f43ab2b3379407a421, type: 3}
+      propertyPath: m_AdaptiveUV
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066665007488772287, guid: 17be308e50cff3f43ab2b3379407a421, type: 3}
+      propertyPath: m_EnableTangents
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066665007488772287, guid: 17be308e50cff3f43ab2b3379407a421, type: 3}
+      propertyPath: m_FillPixelPerUnit
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17be308e50cff3f43ab2b3379407a421, type: 3}
 --- !u!1001 &214341181
