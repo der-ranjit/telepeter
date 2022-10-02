@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 7326168250037648329}
   - component: {fileID: 2077571650797849696}
   m_Layer: 0
-  m_Name: Decoration
+  m_Name: Tile_Pallete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
