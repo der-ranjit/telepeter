@@ -21,4 +21,9 @@ public class AIController : InputController
     {
         return true;
     }
+
+    public override bool RetrieveJumpInputUp()
+    {
+        return true;
+    }
 }

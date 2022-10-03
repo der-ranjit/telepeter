@@ -8,11 +8,13 @@ public class Jump : MonoBehaviour
     [SerializeField, Range(0f, 10f)] private float jumpHeight = 3f;
     [SerializeField, Range(0, 5)] private int maxAirJumps = 0;
 
-    [SerializeField, Range(0, 8)] private int jumpBuffer = 3;
-    [SerializeField, Range(0, 8)] private int coyoteTime = 3;
+    // [SerializeField, Range(0, 8)] private int jumpBuffer = 3;
+    // [SerializeField, Range(0, 8)] private int coyoteTime = 3;
 
     [SerializeField, Range(0f, 5f)] private float downwardMovementMultiplier = 3f;
     [SerializeField, Range(0f, 5f)] private float upwardMovementMultiplier = 1.7f;
+
+    [SerializeField] private bool isVariableHeight = true;
 
     private Rigidbody2D body;
     private Ground ground;
@@ -23,17 +25,18 @@ public class Jump : MonoBehaviour
 
     private bool desiredJump;
     private bool onGround;
-    private int jumpBufferFramesLeft;
-    private int coyoteTimeFramesLeft;
 
-    private bool isJumping = false;
+    private bool isJumpPressed;
+    private bool isJumpUp;
+    // private int jumpBufferFramesLeft;
+    // private int coyoteTimeFramesLeft;
 
-    
+
     public bool isJetpack = false;
     [SerializeField, Range(0f, -1f)] private float upwardJetpackMultiplier = -0.5f;
 
 
-    
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -47,6 +50,8 @@ public class Jump : MonoBehaviour
     void Update()
     {
         desiredJump |= input.RetrieveJumpInputDown();
+        isJumpPressed = input.RetrieveJumpInput();
+        isJumpUp = input.RetrieveJumpInputUp();
 
 
     }
@@ -55,82 +60,55 @@ public class Jump : MonoBehaviour
     {
         onGround = ground.GetOnGround();
         velocity = body.velocity;
-        bool isJumpPressed = input.RetrieveJumpInput();
-        
-        
-        // Coyote Time 
+
+
         if (onGround)
         {
             jumpPhase = 0;
-            coyoteTimeFramesLeft = coyoteTime;
-            isJumping = false;
         }
 
-        if(!onGround && coyoteTimeFramesLeft > 0){
-            // Debug.Log("coyoteTime:"+coyoteTimeFramesLeft);
-            // Debug.Log("Ground:"+onGround);
-            coyoteTimeFramesLeft -= 1;
-            onGround = true;
-        }
-
-
-        // Jump Buffer and jump action
+        // jump action
         if (desiredJump)
         {
             desiredJump = false;
-            // if (isJetpack && onGround){
-            //     // Debug.Log("Jetpack Thrust");
-            //     body.gravityScale = -2.0f;
-            // }
-            jumpBufferFramesLeft = jumpBuffer;
-            JumpAction();
-        } else if (jumpBufferFramesLeft > 0)
-        {
-            // Debug.Log("Jump Buffer:" + jumpBufferFramesLeft);
-            jumpBufferFramesLeft -= 1;
             JumpAction();
         }
 
-        // Variable jump height implementation
-        if (isJumpPressed && isJumping)
-        {
-            // if (body.velocity.y > 0)
-            // {
-            //     body.gravityScale = upwardMovementMultiplier;
-            // }
-            // else
-            // {
-            //     body.gravityScale = downwardMovementMultiplier;
-            // }
-        }
-        else
+        // Variable Jump Height
+        if ( !isVariableHeight || (!isJumpUp && isJumpPressed)){
+            if (body.velocity.y > 0)
+            {
+                body.gravityScale = !isJetpack ? upwardMovementMultiplier : upwardJetpackMultiplier;
+            }
+            else if (body.velocity.y < 0)
+            {
+                body.gravityScale = !isJetpack ? downwardMovementMultiplier : upwardJetpackMultiplier;
+            }
+            else if (body.velocity.y == 0)
+            {
+                body.gravityScale = defaultGravityScale;
+            }
+        } 
+        else 
         {
             body.gravityScale = downwardMovementMultiplier;
         }
 
-        if (isJumpPressed && isJetpack) {
-            this.PerformJetpack();
-        }
 
         body.velocity = velocity;
     }
 
     private void JumpAction()
     {
-        if (onGround || jumpPhase < maxAirJumps)
+        // Debug.Log("Jump Called");
+        if (onGround || jumpPhase < maxAirJumps || isJetpack)
         {
-            Debug.Log("Jump Performed");
-            // Jump
-            jumpBufferFramesLeft = 0;
-            coyoteTimeFramesLeft = 0;
             jumpPhase += 1;
-            velocity.y = jumpHeight * 3;
-            isJumping = true;
-            Debug.Log(velocity.y + "," + body.gravityScale);
+            float jumpSpeed = Mathf.Sqrt(-2f* Physics2D.gravity.y*jumpHeight);
+            if (velocity.y > 0f){
+                jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
+            }
+            velocity.y += jumpSpeed;
         }
-    }
-
-    private void PerformJetpack() {
-        // velocity.y += 0.5f;
     }
 }
