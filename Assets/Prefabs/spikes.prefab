@@ -46,13 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4e77b320c47e1a995830efc04479c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killComments:
-  - huch
-  - ach
-  - ups
-  - lel
-  - bre
-  - sus
+  killComments: []
 --- !u!212 &6932826027670118922
 SpriteRenderer:
   m_ObjectHideFlags: 0
