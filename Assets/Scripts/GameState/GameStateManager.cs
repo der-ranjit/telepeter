@@ -91,23 +91,23 @@ public class GameStateManager : MonoBehaviour
 
     private void OpenStartScreen() {
         var startScreen = UIManager.Instance.FindObjectByName("StartScreen");
-        UIManager.Instance.FadeCanvasGroup(startScreen.GetComponent<CanvasGroup>(), true, 0.1f);
+        UIManager.Instance.FadeCanvasGroup(startScreen.GetComponent<CanvasGroup>(), true, 0.01f);
         var test = startScreen.transform.Find("Button").GetComponent<UnityEngine.UI.Button>();
         Debug.Log(test);
         test.onClick.AddListener(() => {
-            UIManager.Instance.FadeCanvasGroup(startScreen.GetComponent<CanvasGroup>(), false, 0.1f);
             SetGameLifeState(GameLifeStates.ShowControls);
+            UIManager.Instance.FadeCanvasGroup(startScreen.GetComponent<CanvasGroup>(), false, 0.01f);
         });
     }
 
     private void OpenControlsScreen() {
         var controlsScreen = UIManager.Instance.FindObjectByName("ControlsScreen");
-        UIManager.Instance.FadeCanvasGroup(controlsScreen.GetComponent<CanvasGroup>(), true, 0.1f);
+        UIManager.Instance.FadeCanvasGroup(controlsScreen.GetComponent<CanvasGroup>(), true, 0.01f);
         var test = controlsScreen.transform.Find("Button").GetComponent<UnityEngine.UI.Button>();
         Debug.Log(test);
         test.onClick.AddListener(() => {
-            UIManager.Instance.FadeCanvasGroup(controlsScreen.GetComponent<CanvasGroup>(), false, 0.1f);
             SetGameLifeState(GameLifeStates.Running);
+            UIManager.Instance.FadeCanvasGroup(controlsScreen.GetComponent<CanvasGroup>(), false, 0.01f);
         });
     }
 
