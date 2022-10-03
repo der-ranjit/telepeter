@@ -28,4 +28,18 @@ public class PlayerController : InputController
         return Input.GetAxisRaw("Horizontal");
     }
 
+    public override bool RetrieveUseButton()
+    {
+        return Input.GetButton("Use");
+    }
+
+    public override bool RetrieveUseButtonDown()
+    {
+        return Input.GetButtonDown("Use");
+    }
+
+    public override bool RetrieveUseButtonUp()
+    {
+        return Input.GetButtonUp("Use");
+    }
 }
