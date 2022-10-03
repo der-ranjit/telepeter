@@ -5,6 +5,11 @@ public class Animalesiator : MonoBehaviour
 {
     public static Animalesiator Instance;
 
+    public float minPitch = 1.3f;
+    public float maxPitch = 1.7f;
+    public float specialCharacterPause = 0.075f;
+    public float soundLength = 0.5f;
+
     private object[] clips;
 
     private AudioSource audioSource;
@@ -17,29 +22,24 @@ public class Animalesiator : MonoBehaviour
         }
     }
 
-    void Start() {
-        // Animalesiatize("HEYOOO ZEIG MAL HERH");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Animalesiatize(string text) {
-        StartCoroutine(Vocalize(text));
+    public Coroutine Animalesiatize(string text) {
+        if (audioSource != null && clips.Length > 0) {
+            return StartCoroutine(Vocalize(text));
+        }
+        return null;
     }
 
     private IEnumerator Vocalize(string text) {
         foreach(char character in text) {
             var clip = GetCharacterClip(char.ToLower(character));
             if (clip != null) {
+                float randomPitch = Random.Range(minPitch, maxPitch);
+                audioSource.pitch = randomPitch;
                 audioSource.clip = clip;
                 audioSource.Play();
-                yield return new WaitForSeconds(clip.length);
+                yield return new WaitForSeconds(clip.length / audioSource.pitch * soundLength);
             } else {
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(specialCharacterPause);
             }
         }
     } 
