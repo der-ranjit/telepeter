@@ -121,11 +121,11 @@ public class GameStateManager : MonoBehaviour
     
     private void OpenEndGameScreen() {
          var endGameScreen = UIManager.Instance.FindObjectByName("EndGameScreen");
-        UIManager.Instance.FadeCanvasGroup(endGameScreen.GetComponent<CanvasGroup>(), true, 0.1f);
+        UIManager.Instance.FadeCanvasGroup(endGameScreen.GetComponent<CanvasGroup>(), true, 0.01f);
     }
     
     private void OpenEndScreen() {
          var endScreen = UIManager.Instance.FindObjectByName("EndScreen");
-        UIManager.Instance.FadeCanvasGroup(endScreen.GetComponent<CanvasGroup>(), true, 0.1f);
+        UIManager.Instance.FadeCanvasGroup(endScreen.GetComponent<CanvasGroup>(), true, 0.01f);
     }
 }
