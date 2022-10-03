@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AIController", menuName = "InputController/AIController")]
 public class AIController : InputController
 {
-   
+
     public override bool RetrieveJumpInput()
     {
         return true;
@@ -23,6 +23,21 @@ public class AIController : InputController
     }
 
     public override bool RetrieveJumpInputUp()
+    {
+        return true;
+    }
+
+    public override bool RetrieveUseButton()
+    {
+        return true;
+    }
+
+    public override bool RetrieveUseButtonUp()
+    {
+        return true;
+    }
+
+    public override bool RetrieveUseButtonDown()
     {
         return true;
     }
