@@ -28,6 +28,7 @@ public class Jump : MonoBehaviour
 
     private bool isJumpPressed;
     private bool isJumpUp;
+    private bool isJetpacking = false;
     // private int jumpBufferFramesLeft;
     // private int coyoteTimeFramesLeft;
 
@@ -73,6 +74,7 @@ public class Jump : MonoBehaviour
             JumpAction();
         } 
         if (!isJumpPressed) {
+            isJetpacking = false;
             this.transform.Find("jetpack_for_player")
                 .GetComponent<Animator>().SetBool("isThrustActive", false);
         }
@@ -100,6 +102,12 @@ public class Jump : MonoBehaviour
 
         body.velocity = velocity;
 
+        // Cat animation update
+        Animator catAnimator = this.transform.Find("space_cat_perspective")
+            .GetComponent<Animator>();
+        catAnimator.SetBool("onGround", onGround);
+        catAnimator.SetBool("isJetpacking", isJetpacking);
+        catAnimator.SetFloat("horizontalSpeed", Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.x));
     }
 
     private void JumpAction()
@@ -116,6 +124,7 @@ public class Jump : MonoBehaviour
 
             if (isJetpack) {
                 Debug.Log("Jetpack active");
+                isJetpacking = true;
                 this.transform.Find("jetpack_for_player")
                     .GetComponent<Animator>().SetBool("isThrustActive", true);
             }
