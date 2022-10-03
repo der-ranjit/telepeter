@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1890193704493828215, guid: 56ad1e9bc0e32394485cf805943952a9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 0c8bbaec3d734fb4e94c8bb625b08f55, type: 2}
     - target: {fileID: 4193209100600547083, guid: 56ad1e9bc0e32394485cf805943952a9, type: 3}
       propertyPath: coyoteTime
       value: 8
