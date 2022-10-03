@@ -41,7 +41,16 @@ public class DialogManager : MonoBehaviour
 
     public void TriggerDialog(string name, string text, GameObject gameObject) {
         CloseDialog();
-        autoCloseCoroutine = StartCoroutine(TriggerAndAutocloseDialog(name, text, gameObject));
+        if (text.Length > 0) {
+            autoCloseCoroutine = StartCoroutine(TriggerAndAutocloseDialog(name, text, gameObject));
+        }
+    }
+    
+    public void TriggerDialogWithRandomText(string name, string[] texts, GameObject gameObject) {
+        if (texts.Length > 0) {
+            string text = texts[Random.Range(0, texts.Length)];
+            TriggerDialog(name, text, gameObject);
+        }
     }
 
 

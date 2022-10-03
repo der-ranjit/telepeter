@@ -77,11 +77,7 @@ public class KeyPickup : Interactable
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
-        if (!this.disabled) {
-            if (collision.gameObject.tag == "Player") {
-                Interact(collision.gameObject);
-            }
-        }
+        OnTriggerEnter2D(collision.collider);
     }
 
 }

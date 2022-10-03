@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5707842240414883190}
-  - component: {fileID: 5707842240414883185}
   - component: {fileID: 5707842240414883191}
+  - component: {fileID: 5707842240414883185}
   - component: {fileID: 5707842240414883188}
   - component: {fileID: 5707842240414883189}
   m_Layer: 0
@@ -35,6 +35,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &5707842240414883191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707842240414883184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c34ba401eeed7cdd5ab362ec46207b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionComments:
+  - hey!
+  - no touchy
+  - touchy no no
+  - hey no touchy hey ho hey
+  target: {fileID: 0}
 --- !u!212 &5707842240414883185
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -87,18 +105,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5707842240414883191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5707842240414883184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c34ba401eeed7cdd5ab362ec46207b25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &5707842240414883188
 BoxCollider2D:
   m_ObjectHideFlags: 0
