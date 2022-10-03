@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8216727463502197107}
   - component: {fileID: 8216727463502197100}
   - component: {fileID: 3333818315385081006}
+  - component: {fileID: 3075190496189383161}
   m_Layer: 0
   m_Name: GroundSlime
-  m_TagString: Untagged
+  m_TagString: GroundSlime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,3 +98,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc12b3cb254f30f08106038042a091b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!251 &3075190496189383161
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8216727463502197101}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
