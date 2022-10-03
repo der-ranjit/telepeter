@@ -421,6 +421,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5772643868071081478, guid: d60a40c06bf296f4291c8a9c48913616, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime0
+      value: 25443
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772643868071081478, guid: d60a40c06bf296f4291c8a9c48913616, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 45296
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772643868071081478, guid: d60a40c06bf296f4291c8a9c48913616, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 45296
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772643868071081478, guid: d60a40c06bf296f4291c8a9c48913616, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772643868071081478, guid: d60a40c06bf296f4291c8a9c48913616, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772643868071081478, guid: d60a40c06bf296f4291c8a9c48913616, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772643868071081478, guid: d60a40c06bf296f4291c8a9c48913616, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772643868071081478, guid: d60a40c06bf296f4291c8a9c48913616, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772643868071081478, guid: d60a40c06bf296f4291c8a9c48913616, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumColorKeys
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772643868071081478, guid: d60a40c06bf296f4291c8a9c48913616, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.013175964
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772643868071081478, guid: d60a40c06bf296f4291c8a9c48913616, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.44697
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d60a40c06bf296f4291c8a9c48913616, type: 3}
 --- !u!1 &287363226 stripped
