@@ -24,7 +24,7 @@ public class Telepeter : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-        Debug.Log("Telepeter Stay " + collider.gameObject.name);
+        // Debug.Log("Telepeter Stay " + collider.gameObject.name);
         Interact(collider);
 
     }
