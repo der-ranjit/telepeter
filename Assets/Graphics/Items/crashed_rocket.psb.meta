@@ -1,0 +1,473 @@
+fileFormatVersion: 2
+guid: ae644b680dddd49cbb4884e8debfa55a
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: sprinkles
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1150
+      y: 4
+      width: 789
+      height: 1348
+    spriteID: 99c7c839aad284219a2bced3707d8db3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 964, y: -27}
+  - name: cracjs_left
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1861
+      y: 1741
+      width: 138
+      height: 279
+    spriteID: ee183c58d50064f559ac508b82260f28
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1730, y: 1676}
+  - name: fire_left
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1752
+      y: 1360
+      width: 180
+      height: 269
+    spriteID: a375017f09c63418d873c3e996648ca8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1694, y: 1268}
+  - name: cracks_top
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1150
+      y: 1741
+      width: 522
+      height: 113
+    spriteID: 7a8791c18c60b45d5ad99820a0ebdd4d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 793, y: 662}
+  - name: cracks_right
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 380
+      y: 1162
+      width: 138
+      height: 279
+    spriteID: b9fc0ca75b1b7462dbedd30d0a9bee14
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -438, y: 1087}
+  - name: fire_right
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1680
+      y: 1741
+      width: 173
+      height: 269
+    spriteID: 8e9e4137574654791955906b522089cb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 826, y: 1630}
+  - name: window_cracks
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1162
+      width: 368
+      height: 429
+    spriteID: c9c65991a464847a8baf0716ada0d9e9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -397, y: 884}
+  - name: fire_window_top
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 526
+      y: 1162
+      width: 179
+      height: 197
+    spriteID: 8a38d0aa61243423b900b23b967c1836
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -80, y: 583}
+  - name: fire_window
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 713
+      y: 1162
+      width: 179
+      height: 197
+    spriteID: 5a86900ba5a934dd1a7a86aff8066b19
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 229, y: 853}
+  - name: rocket
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 1138
+      height: 1150
+    spriteID: 31258e88083f64e4e96a029a2eeadadd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -33, y: -13}
+  - name: fire_top
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1150
+      y: 1360
+      width: 594
+      height: 373
+    spriteID: 142f91e4a8ba449efb8792654b92baa9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 802, y: 279}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: sprinkles
+    spriteName: sprinkles
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 99c7c839aad284219a2bced3707d8db3
+    layerID: 12
+    mosaicPosition: {x: 1150, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: cracjs_left
+    spriteName: cracjs_left
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ee183c58d50064f559ac508b82260f28
+    layerID: 11
+    mosaicPosition: {x: 1861, y: 1741}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fire_left
+    spriteName: fire_left
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a375017f09c63418d873c3e996648ca8
+    layerID: 10
+    mosaicPosition: {x: 1752, y: 1360}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: cracks_top
+    spriteName: cracks_top
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7a8791c18c60b45d5ad99820a0ebdd4d
+    layerID: 9
+    mosaicPosition: {x: 1150, y: 1741}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: cracks_right
+    spriteName: cracks_right
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b9fc0ca75b1b7462dbedd30d0a9bee14
+    layerID: 8
+    mosaicPosition: {x: 380, y: 1162}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fire_right
+    spriteName: fire_right
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8e9e4137574654791955906b522089cb
+    layerID: 7
+    mosaicPosition: {x: 1680, y: 1741}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: window_cracks
+    spriteName: window_cracks
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c9c65991a464847a8baf0716ada0d9e9
+    layerID: 6
+    mosaicPosition: {x: 4, y: 1162}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fire_window_top
+    spriteName: fire_window_top
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8a38d0aa61243423b900b23b967c1836
+    layerID: 5
+    mosaicPosition: {x: 526, y: 1162}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fire_window
+    spriteName: fire_window
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5a86900ba5a934dd1a7a86aff8066b19
+    layerID: 4
+    mosaicPosition: {x: 713, y: 1162}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: rocket
+    spriteName: rocket
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 31258e88083f64e4e96a029a2eeadadd
+    layerID: 3
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fire_top
+    spriteName: fire_top
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 142f91e4a8ba449efb8792654b92baa9
+    layerID: 2
+    mosaicPosition: {x: 1150, y: 1360}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
