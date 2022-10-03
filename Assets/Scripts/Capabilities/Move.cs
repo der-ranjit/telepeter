@@ -48,6 +48,12 @@ public class Move : MonoBehaviour
     {
         direction.x = input.RetrieveMoveInput();
 
+        if (direction.x != 0) {
+            Vector3 scale = this.gameObject.transform.localScale;
+            float sx = Mathf.Abs(scale.x);
+            this.gameObject.transform.localScale = new Vector3((direction.x > 0 ? sx : -sx), scale.y, scale.z);
+        }
+
         if (IsOnSlope())
         {
             Vector2 groundNormal = ground.GetNormal();
