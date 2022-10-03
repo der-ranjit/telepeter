@@ -33,6 +33,8 @@ public class UIManager : MonoBehaviour
 
     public void FadeCanvasGroup(CanvasGroup canvasGroup, bool fadeIn, float fadeTime = 0.1f) {
         if (canvasGroup != null) {
+            canvasGroup.interactable = fadeIn;
+            canvasGroup.blocksRaycasts = fadeIn;
             StartCoroutine(Fade(canvasGroup, canvasGroup.alpha, fadeIn ? 1 : 0, fadeTime));
         }
     }
