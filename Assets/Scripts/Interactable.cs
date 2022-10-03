@@ -23,7 +23,7 @@ public class Interactable : MonoBehaviour
         if (!disabled) {
             if (other.tag == "Player") {
                 disabled = true;
-                DialogManager.Instance.TriggerDialogWithRandomText(GetType().Name, interactionComments, gameObject);
+                // DialogManager.Instance.TriggerDialogWithRandomText(GetType().Name, interactionComments, gameObject);
                 Interact(other.gameObject);
             }
         }
