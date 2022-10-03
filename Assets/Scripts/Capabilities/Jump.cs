@@ -28,6 +28,8 @@ public class Jump : MonoBehaviour
 
     private bool isJumpPressed;
     private bool isJumpUp;
+    private bool isJetpacking = false;
+    private GameObject jetpackObject;
     // private int jumpBufferFramesLeft;
     // private int coyoteTimeFramesLeft;
 
@@ -44,6 +46,9 @@ public class Jump : MonoBehaviour
         ground = GetComponent<Ground>();
 
         defaultGravityScale = 1f;
+
+        jetpackObject = this.transform.Find("jetpack_for_player").gameObject;
+        jetpackObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,7 +66,6 @@ public class Jump : MonoBehaviour
         onGround = ground.GetOnGround();
         velocity = body.velocity;
 
-
         if (onGround)
         {
             jumpPhase = 0;
@@ -72,6 +76,11 @@ public class Jump : MonoBehaviour
         {
             desiredJump = false;
             JumpAction();
+        } 
+        if (!isJumpPressed) {
+            isJetpacking = false;
+            this.transform.Find("jetpack_for_player")
+                .GetComponent<Animator>().SetBool("isThrustActive", false);
         }
 
         // Variable Jump Height
@@ -96,6 +105,13 @@ public class Jump : MonoBehaviour
 
 
         body.velocity = velocity;
+
+        // Cat animation update
+        Animator catAnimator = this.transform.Find("space_cat_perspective")
+            .GetComponent<Animator>();
+        catAnimator.SetBool("onGround", onGround);
+        catAnimator.SetBool("isJetpacking", isJetpacking);
+        catAnimator.SetFloat("horizontalSpeed", Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.x));
     }
 
     private void JumpAction()
@@ -109,6 +125,18 @@ public class Jump : MonoBehaviour
                 jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
             }
             velocity.y += jumpSpeed;
+
+            if (isJetpack) {
+                Debug.Log("Jetpack active");
+                isJetpacking = true;
+                this.transform.Find("jetpack_for_player")
+                    .GetComponent<Animator>().SetBool("isThrustActive", true);
+            }
         }
+    }
+
+    public void enableJetpack() {
+        this.isJetpack = true;
+        jetpackObject.SetActive(true);
     }
 }
