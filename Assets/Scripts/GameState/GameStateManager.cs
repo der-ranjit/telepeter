@@ -7,6 +7,7 @@ public enum GameLifeStates {
     StartScreen,
     ShowControls,
     Running,
+    EndGameScreen,
     EndScreen
 }
 
@@ -42,6 +43,9 @@ public class GameStateManager : MonoBehaviour
                 break;
             case GameLifeStates.Running:
                 StartGame();
+                break;
+            case GameLifeStates.EndGameScreen:
+                OpenEndGameScreen();
                 break;
             case GameLifeStates.EndScreen:
                 OpenEndScreen();
@@ -113,6 +117,11 @@ public class GameStateManager : MonoBehaviour
 
     private void StartGame() {
         UIManager.Instance.FindObjectByTag("PlayerSpawner").GetComponent<PlayerSpawner>().Spawn();
+    }
+    
+    private void OpenEndGameScreen() {
+         var endGameScreen = UIManager.Instance.FindObjectByName("EndGameScreen");
+        UIManager.Instance.FadeCanvasGroup(endGameScreen.GetComponent<CanvasGroup>(), true, 0.1f);
     }
     
     private void OpenEndScreen() {
