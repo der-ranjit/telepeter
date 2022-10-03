@@ -34,7 +34,6 @@ public class DialogManager : MonoBehaviour
     void Update() {
         if (trackedGameObject != null) {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            Debug.Log(Vector3.Distance(player.transform.position, trackedGameObject.transform.position));
             if (player != null && Vector3.Distance(player.transform.position, trackedGameObject.transform.position) > autocloseDistance) {
                 CloseDialog();
             }

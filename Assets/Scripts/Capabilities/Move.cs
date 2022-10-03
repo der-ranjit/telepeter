@@ -20,6 +20,8 @@ public class Move : MonoBehaviour
     private float acceleration;
     private bool onGround;
 
+    private float remainingSpeedUpTime = 0;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -54,8 +56,14 @@ public class Move : MonoBehaviour
             desiredVelocity = new Vector2(direction.x,slopeDirection.y) * Mathf.Max(maxSlopeSpeed - ground.GetFriction(), 0);
             // Debug.Log("DesiredVel"+desiredVelocity);
         } else {
-            desiredVelocity = new Vector2(direction.x, 0) * Mathf.Max(maxSpeed - ground.GetFriction(), 0);
-            
+            desiredVelocity = new Vector2(direction.x, 0) * Mathf.Max(maxSpeed - ground.GetFriction(), 0);   
+        }
+
+        // Update speed-up-time
+        if (this.remainingSpeedUpTime > 0) {
+            this.remainingSpeedUpTime = Mathf.MoveTowards(this.remainingSpeedUpTime, 0, Time.deltaTime);
+            // Affect desired speed
+            desiredVelocity *= 2;
         }
     }
 
@@ -80,6 +88,14 @@ public class Move : MonoBehaviour
         }
 
         body.velocity = velocity;
+    }
+
+    public float GetSpeedUpDuration() {
+        return remainingSpeedUpTime;
+    }
+
+    public void SetSpeedUpDuration(float duration) {
+        this.remainingSpeedUpTime = duration;
     }
 
 }

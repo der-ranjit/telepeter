@@ -15,7 +15,7 @@ public class Slime : MonoBehaviour
 
 
     void Start() {
-        this.Lifetime = 1 + 5 * Random.Range(0f, 1f);
+        this.Lifetime = 4 + 5 * Random.Range(0f, 1f);
     }
 
     // Update is called once per frame
@@ -49,5 +49,25 @@ public class Slime : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         prevContact = collision.GetContact(collision.contactCount - 1);
+        if (Random.Range(0f, 1f) < 0.1) {
+            this.SplashIfGroundIsFree(collision);
+        }
+    }
+
+    private void SplashIfGroundIsFree(Collision2D collision) {
+        ContactPoint2D point = collision.GetContact(0);
+        if (this.isGroundFree(point.point)) {
+            this.ReplaceWithGroundSlime(point);
+        }
+    }
+
+    private bool isGroundFree(Vector2 point) {
+        GameObject[] slimes = GameObject.FindGameObjectsWithTag("GroundSlime");
+        foreach (var slime in slimes) {
+            if (((Vector2)slime.transform.position - point).magnitude < 0.75f) {
+                return false;
+            }
+        }
+        return true;
     }
 }

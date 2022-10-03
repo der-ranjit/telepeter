@@ -19,6 +19,10 @@ public class PlayerController : InputController
         return Input.GetButtonDown("Jump");
     }
 
+    public override bool RetrieveJumpInputUp(){
+        return Input.GetButtonUp("Jump");
+    }
+
     public override float RetrieveMoveInput()
     {
         return Input.GetAxisRaw("Horizontal");

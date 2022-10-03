@@ -20,6 +20,8 @@ public class FollowPlayerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (followCamera != null && followCamera.Follow == null) {
+            followCamera.Follow = GameObject.FindGameObjectWithTag("Player")?.transform;
+        }
     }
 }

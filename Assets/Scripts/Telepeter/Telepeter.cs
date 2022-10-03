@@ -28,6 +28,10 @@ public class Telepeter : MonoBehaviour
     }
 
     void Update() {
+        if (GameStateManager.Instance.currentGameLifeState != GameLifeStates.Running) {
+            return;
+        }
+        
         timePassed += Time.deltaTime;
         remainingTime = respawnDuration - timePassed;
         if (timePassed >= respawnDuration) {
