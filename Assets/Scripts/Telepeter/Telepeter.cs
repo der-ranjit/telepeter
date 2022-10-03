@@ -76,7 +76,7 @@ public class Telepeter : MonoBehaviour
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag(tagToTeleport);
         Vector2 targetPos = transform.position + new Vector3(0, 2f, 0);
-        DialogManager.Instance.TriggerDialogWithRandomText(GetType().Name, respawnComments, gameObject);
+        DialogManager.Instance.TriggerDialogWithRandomText(GetType().Name, respawnComments, gameObject, true);
         foreach (GameObject player in players)
         {
             player.transform.position = targetPos;

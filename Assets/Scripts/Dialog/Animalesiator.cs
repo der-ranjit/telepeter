@@ -22,22 +22,22 @@ public class Animalesiator : MonoBehaviour
         }
     }
 
-    public Coroutine Animalesiatize(string text) {
+    public Coroutine Animalesiatize(string text, bool lowVoice = false) {
         if (audioSource != null && clips.Length > 0) {
-            return StartCoroutine(Vocalize(text));
+            return StartCoroutine(Vocalize(text, lowVoice));
         }
         return null;
     }
 
-    private IEnumerator Vocalize(string text) {
+    private IEnumerator Vocalize(string text, bool lowVoice = false) {
         foreach(char character in text) {
             var clip = GetCharacterClip(char.ToLower(character));
             if (clip != null) {
-                float randomPitch = Random.Range(minPitch, maxPitch);
+                float randomPitch = Random.Range(minPitch * (lowVoice ? .6f : 1f), maxPitch * (lowVoice ? .6f : 1f));
                 audioSource.pitch = randomPitch;
                 audioSource.clip = clip;
                 audioSource.Play();
-                yield return new WaitForSeconds(clip.length / audioSource.pitch * soundLength);
+                yield return new WaitForSeconds(clip.length / audioSource.pitch * (lowVoice ? soundLength / 2 : 1f));
             } else {
                 yield return new WaitForSeconds(specialCharacterPause);
             }

@@ -40,28 +40,28 @@ public class DialogManager : MonoBehaviour
         }
     }
 
-    public void TriggerDialog(string name, string text, GameObject gameObject) {
+    public void TriggerDialog(string name, string text, GameObject gameObject, bool lowVoice = false) {
         CloseDialog();
         if (text.Length > 0) {
-            autoCloseCoroutine = StartCoroutine(TriggerAndAutocloseDialog(name, text, gameObject));
+            autoCloseCoroutine = StartCoroutine(TriggerAndAutocloseDialog(name, text, gameObject, lowVoice));
         }
     }
     
-    public void TriggerDialogWithRandomText(string name, string[] texts, GameObject gameObject) {
+    public void TriggerDialogWithRandomText(string name, string[] texts, GameObject gameObject, bool lowVoice = false) {
         if (texts.Length > 0) {
             string text = texts[Random.Range(0, texts.Length)];
-            TriggerDialog(name, text, gameObject);
+            TriggerDialog(name, text, gameObject, lowVoice);
         }
     }
 
 
-    private IEnumerator TriggerAndAutocloseDialog(string name, string text, GameObject gameObject) {
+    private IEnumerator TriggerAndAutocloseDialog(string name, string text, GameObject gameObject, bool lowVoice = false) {
         if (dialogPanel != null && dialogPanelDialogTextMesh != null && dialogPanelNameTextMesh != null) {
             trackedGameObject = gameObject;
             dialogPanelNameTextMesh.text = name;
             dialogPanelDialogTextMesh.text = text;
             UIManager.Instance.FadeCanvasGroup(dialogPanel.GetComponent<CanvasGroup>(), true);
-            yield return Animalesiator.Instance.Animalesiatize(text);
+            yield return Animalesiator.Instance.Animalesiatize(text, lowVoice);
             yield return new WaitForSeconds(dialogOpenTimeAfterClipFinished);
             CloseDialog();
         }
