@@ -44,7 +44,7 @@ public class GameStateManager : MonoBehaviour
                 StartGame();
                 break;
             case GameLifeStates.EndScreen:
-                StartGame();
+                OpenEndScreen();
                 break;
             default:
                 break;
