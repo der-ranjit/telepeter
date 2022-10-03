@@ -5,6 +5,7 @@ public class Telepeter : MonoBehaviour
 {
 
     public static Telepeter Instance;
+    public string[] respawnComments = { "" };
     public float respawnDuration = 10;
     public string tagToTeleport = "Player";
     public float remainingTime;
@@ -39,6 +40,7 @@ public class Telepeter : MonoBehaviour
     void TeleportPlayer() {
         GameObject[] players = GameObject.FindGameObjectsWithTag(tagToTeleport);
         Vector2 targetPos = transform.position + new Vector3(0, 2f, 0);
+        DialogManager.Instance.TriggerDialogWithRandomText(GetType().Name, respawnComments, gameObject);
         foreach (GameObject player in players) {
             player.transform.position = targetPos;
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -0.5f);

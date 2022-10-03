@@ -131,7 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3848352aa0babb748971182a3046dd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 10
+  respawnComments:
+  - oof brudi was los
+  - ich kagger dir in den ford
+  - 'mach dich weg '
+  respawnDuration: 10
   tagToTeleport: Player
   remainingTime: 0
   currentIteration: 1

@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
     protected bool disabled = false;
+
+    public string[] interactionComments = { "" };
 
     // Start is called before the first frame update
     void Start() {
@@ -19,10 +19,11 @@ public class Interactable : MonoBehaviour
         Debug.Log("Unspecified interaction with player!");
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (!this.disabled) {
+    protected void OnTriggerEnter2D(Collider2D other) {
+        if (!disabled) {
             if (other.tag == "Player") {
-                this.disabled = true;
+                disabled = true;
+                DialogManager.Instance.TriggerDialogWithRandomText(GetType().Name, interactionComments, gameObject);
                 Interact(other.gameObject);
             }
         }
