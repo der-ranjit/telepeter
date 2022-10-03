@@ -29,6 +29,7 @@ public class Jump : MonoBehaviour
     private bool isJumpPressed;
     private bool isJumpUp;
     private bool isJetpacking = false;
+    private GameObject jetpackObject;
     // private int jumpBufferFramesLeft;
     // private int coyoteTimeFramesLeft;
 
@@ -45,6 +46,9 @@ public class Jump : MonoBehaviour
         ground = GetComponent<Ground>();
 
         defaultGravityScale = 1f;
+
+        jetpackObject = this.transform.Find("jetpack_for_player").gameObject;
+        jetpackObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -129,5 +133,10 @@ public class Jump : MonoBehaviour
                     .GetComponent<Animator>().SetBool("isThrustActive", true);
             }
         }
+    }
+
+    public void enableJetpack() {
+        this.isJetpack = true;
+        jetpackObject.SetActive(true);
     }
 }
