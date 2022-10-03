@@ -14,7 +14,6 @@ public class FloatingAnimationScript : MonoBehaviour
     private float[] randomValues = new float[12];
 
     void Start() {
-        Debug.Log("yo");
         initialX = transform.position.x;
         initialY = transform.position.y;
         for (int i = 0; i < 12; i++) {

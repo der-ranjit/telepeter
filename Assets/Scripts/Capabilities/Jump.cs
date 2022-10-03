@@ -26,6 +26,8 @@ public class Jump : MonoBehaviour
     private int jumpBufferFramesLeft;
     private int coyoteTimeFramesLeft;
 
+    private bool isJumping = false;
+
     
     public bool isJetpack = false;
     [SerializeField, Range(0f, -1f)] private float upwardJetpackMultiplier = -0.5f;
@@ -61,6 +63,7 @@ public class Jump : MonoBehaviour
         {
             jumpPhase = 0;
             coyoteTimeFramesLeft = coyoteTime;
+            isJumping = false;
         }
 
         if(!onGround && coyoteTimeFramesLeft > 0){
@@ -75,14 +78,13 @@ public class Jump : MonoBehaviour
         if (desiredJump)
         {
             desiredJump = false;
-            if (isJetpack && onGround){
-                // Debug.Log("Jetpack Thrust");
-                body.gravityScale = -2.0f;
-            }
+            // if (isJetpack && onGround){
+            //     // Debug.Log("Jetpack Thrust");
+            //     body.gravityScale = -2.0f;
+            // }
             jumpBufferFramesLeft = jumpBuffer;
             JumpAction();
-        }
-        if (jumpBufferFramesLeft > 0)
+        } else if (jumpBufferFramesLeft > 0)
         {
             // Debug.Log("Jump Buffer:" + jumpBufferFramesLeft);
             jumpBufferFramesLeft -= 1;
@@ -90,24 +92,24 @@ public class Jump : MonoBehaviour
         }
 
         // Variable jump height implementation
-        if (isJumpPressed)
+        if (isJumpPressed && isJumping)
         {
-            if (body.velocity.y > 0)
-            {
-                body.gravityScale = !isJetpack? upwardMovementMultiplier: upwardJetpackMultiplier;
-            }
-            else if (body.velocity.y < 0)
-            {
-                body.gravityScale = !isJetpack? downwardMovementMultiplier: upwardJetpackMultiplier;
-            }
-            else if (body.velocity.y == 0)
-            {
-                body.gravityScale = defaultGravityScale;
-            }
+            // if (body.velocity.y > 0)
+            // {
+            //     body.gravityScale = upwardMovementMultiplier;
+            // }
+            // else
+            // {
+            //     body.gravityScale = downwardMovementMultiplier;
+            // }
         }
         else
         {
             body.gravityScale = downwardMovementMultiplier;
+        }
+
+        if (isJumpPressed && isJetpack) {
+            this.PerformJetpack();
         }
 
         body.velocity = velocity;
@@ -115,23 +117,20 @@ public class Jump : MonoBehaviour
 
     private void JumpAction()
     {
-        // Debug.Log("Jump Called");
-        if (onGround || jumpPhase < maxAirJumps || isJetpack )
+        if (onGround || jumpPhase < maxAirJumps)
         {
-            // Debug.Log("Activated");
+            Debug.Log("Jump Performed");
+            // Jump
             jumpBufferFramesLeft = 0;
             coyoteTimeFramesLeft = 0;
             jumpPhase += 1;
-            float jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * jumpHeight);
-            if (velocity.y > 0f)
-            {
-                jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
-            }
-            velocity.y += jumpSpeed;
+            velocity.y = jumpHeight * 3;
+            isJumping = true;
+            Debug.Log(velocity.y + "," + body.gravityScale);
         }
-        // else
-        // {
-        //     Debug.Log("Not Activated");
-        // }
+    }
+
+    private void PerformJetpack() {
+        // velocity.y += 0.5f;
     }
 }
