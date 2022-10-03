@@ -24,12 +24,14 @@ public class RocketIntro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // story stuff at beginning
         rocket1 = UIManager.Instance.FindObjectByName("rocket_initial");
         rocket2 = UIManager.Instance.FindObjectByName("rocket_transformation");
         rocket3 = UIManager.Instance.FindObjectByName("crashed_rocket");
         initialY = this.gameObject.transform.position.y;
         Telepeter.Instance.gameObject.SetActive(false);
         UIManager.Instance.FindObjectByName("PlayerFollowCamera").GetComponent<FollowPlayerCamera>().SetTagToFollow("Rocket");
+        DialogManager.Instance.TriggerDialog("Storyteller", "Heyooooooo", gameObject);
     }
 
     // Update is called once per frame
