@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 8805124567332965900}
   - component: {fileID: 8805124567332965901}
   - component: {fileID: 8805124567332965902}
+  - component: {fileID: -1928492872370109753}
   m_Layer: 0
   m_Name: plant_liane_2
   m_TagString: Untagged
@@ -415,3 +416,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!156049354 &-1928492872370109753
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8805124567332965903}
+  m_Enabled: 1
+  m_CellSize: {x: 1, y: 1, z: 1}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
