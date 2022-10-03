@@ -9,6 +9,7 @@ public class DialogManager : MonoBehaviour
 
     public float dialogOpenTimeAfterClipFinished = 1.5f;
     public float autocloseDistance = 5f;
+    public float dialogFadeDuration = 0.1f;
 
     private GameObject dialogPanel;
     private TextMeshProUGUI dialogPanelNameTextMesh;
@@ -25,7 +26,6 @@ public class DialogManager : MonoBehaviour
             this.dialogPanel = dialogPanel;
             dialogPanelNameTextMesh = dialogPanel.transform.Find("Name")?.GetComponent<TextMeshProUGUI>();
             dialogPanelDialogTextMesh = dialogPanel.transform.Find("Dialog")?.GetComponent<TextMeshProUGUI>();
-            CloseDialog();
         }
     }
 
@@ -50,7 +50,7 @@ public class DialogManager : MonoBehaviour
             trackedGameObject = gameObject;
             dialogPanelNameTextMesh.text = name;
             dialogPanelDialogTextMesh.text = text;
-            dialogPanel.SetActive(true);
+            FadeDialogPanel(true);
             yield return Animalesiator.Instance.Animalesiatize(text);
             yield return new WaitForSeconds(dialogOpenTimeAfterClipFinished);
             CloseDialog();
@@ -63,9 +63,9 @@ public class DialogManager : MonoBehaviour
             StopCoroutine(autoCloseCoroutine);
         }
         trackedGameObject = null;
-        dialogPanel.SetActive(false);
         dialogPanelNameTextMesh.text = "";
         dialogPanelDialogTextMesh.text = "";
+        FadeDialogPanel(false);
     }
 
     private GameObject FindDialogPanel() {
@@ -75,5 +75,21 @@ public class DialogManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void FadeDialogPanel(bool fadeIn) {
+        var canvasGroup = dialogPanel.GetComponent<CanvasGroup>();
+        if (canvasGroup != null) {
+            StartCoroutine(Fade(canvasGroup, canvasGroup.alpha, fadeIn ? 1 : 0));
+        }
+    }
+
+    private IEnumerator Fade(CanvasGroup canvasGroup, float start, float end) {
+        float counter = 0;
+        while (counter < dialogFadeDuration) {
+            counter += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(start, end, counter / dialogFadeDuration);
+            yield return null;
+        }
     }
 }
