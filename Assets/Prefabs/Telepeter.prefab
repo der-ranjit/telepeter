@@ -134,9 +134,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: ccf321544ce65ca4b8f80c2014912c8a, type: 2}
   respawnComments:
-  - oof brudi was los
-  - ich kagger dir in den ford
-  - 'mach dich weg '
+  - "Great\u2026 it\u2019s you.. AGAIN "
+  - "I actually had plans for tonight\u2026 oh well\u2026 "
+  - 'How can it be that you still have not managed to do this '
+  - "What\u2019s taking so long"
+  - 'Ah shit, here we go again '
+  - "That\u2019s embarrassing  "
+  - 'Long time no see '
+  - 'Could you maybe hurry up? Thanks! '
   respawnDuration: 10
   tagToTeleport: Player
   remainingTime: 0
