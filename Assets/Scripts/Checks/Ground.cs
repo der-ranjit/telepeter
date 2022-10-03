@@ -22,17 +22,19 @@ public class Ground : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
+        // Debug.Log("onCollisionExit");
         onGround = false;
         friction = 0;
     }
 
     private void EvaluateCollision(Collision2D collision)
     {
+        onGround = false;
         for (int i = 0; i < collision.contactCount; i++)
         {
             normal = collision.GetContact(i).normal;
             onGround |= normal.y >= 0.5f;
-
+            // Debug.Log(normal+" isGround: "+onGround+" condition: "+(normal.y >= 0.5f));
         }
     }
 

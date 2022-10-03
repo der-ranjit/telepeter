@@ -27,18 +27,24 @@ public class GameStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Initialize(currentGameLifeState);
+        SetGameLifeState(currentGameLifeState);
     }
 
-    public void Initialize(GameLifeStates state) {
+    public void SetGameLifeState(GameLifeStates state) {
         currentGameLifeState = state;
         switch (currentGameLifeState)
         {
             case GameLifeStates.StartScreen:
                 OpenStartScreen();
                 break;
+            case GameLifeStates.ShowControls:
+                OpenControlsScreen();
+                break;
             case GameLifeStates.Running:
                 StartGame();
+                break;
+            case GameLifeStates.EndScreen:
+                OpenEndScreen();
                 break;
             default:
                 break;
@@ -85,20 +91,32 @@ public class GameStateManager : MonoBehaviour
 
     private void OpenStartScreen() {
         var startScreen = UIManager.Instance.FindObjectByName("StartScreen");
-        UIManager.Instance.FadeCanvasGroup(startScreen.GetComponent<CanvasGroup>(), true, 0.1f);
+        UIManager.Instance.FadeCanvasGroup(startScreen.GetComponent<CanvasGroup>(), true, 0.01f);
         var test = startScreen.transform.Find("Button").GetComponent<UnityEngine.UI.Button>();
         Debug.Log(test);
-        test.onClick.AddListener(() => EndStartScreen());
+        test.onClick.AddListener(() => {
+            SetGameLifeState(GameLifeStates.ShowControls);
+            UIManager.Instance.FadeCanvasGroup(startScreen.GetComponent<CanvasGroup>(), false, 0.01f);
+        });
     }
 
-    private void EndStartScreen() {
-        var startScreen = UIManager.Instance.FindObjectByName("StartScreen");
-        UIManager.Instance.FadeCanvasGroup(startScreen.GetComponent<CanvasGroup>(), false, 0.1f);
-        this.Initialize(GameLifeStates.Running);
+    private void OpenControlsScreen() {
+        var controlsScreen = UIManager.Instance.FindObjectByName("ControlsScreen");
+        UIManager.Instance.FadeCanvasGroup(controlsScreen.GetComponent<CanvasGroup>(), true, 0.01f);
+        var test = controlsScreen.transform.Find("Button").GetComponent<UnityEngine.UI.Button>();
+        Debug.Log(test);
+        test.onClick.AddListener(() => {
+            SetGameLifeState(GameLifeStates.Running);
+            UIManager.Instance.FadeCanvasGroup(controlsScreen.GetComponent<CanvasGroup>(), false, 0.01f);
+        });
     }
 
     private void StartGame() {
-        // EndStartScreen();
         UIManager.Instance.FindObjectByTag("PlayerSpawner").GetComponent<PlayerSpawner>().Spawn();
+    }
+    
+    private void OpenEndScreen() {
+         var endScreen = UIManager.Instance.FindObjectByName("EndScreen");
+        UIManager.Instance.FadeCanvasGroup(endScreen.GetComponent<CanvasGroup>(), true, 0.1f);
     }
 }
