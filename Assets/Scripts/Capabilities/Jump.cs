@@ -61,7 +61,6 @@ public class Jump : MonoBehaviour
         onGround = ground.GetOnGround();
         velocity = body.velocity;
 
-
         if (onGround)
         {
             jumpPhase = 0;
@@ -72,6 +71,10 @@ public class Jump : MonoBehaviour
         {
             desiredJump = false;
             JumpAction();
+        } 
+        if (!isJumpPressed) {
+            this.transform.Find("jetpack_for_player")
+                .GetComponent<Animator>().SetBool("isThrustActive", false);
         }
 
         // Variable Jump Height
@@ -96,6 +99,7 @@ public class Jump : MonoBehaviour
 
 
         body.velocity = velocity;
+
     }
 
     private void JumpAction()
@@ -109,6 +113,12 @@ public class Jump : MonoBehaviour
                 jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
             }
             velocity.y += jumpSpeed;
+
+            if (isJetpack) {
+                Debug.Log("Jetpack active");
+                this.transform.Find("jetpack_for_player")
+                    .GetComponent<Animator>().SetBool("isThrustActive", true);
+            }
         }
     }
 }
