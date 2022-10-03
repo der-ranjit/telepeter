@@ -1594,11 +1594,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5707842240414883190, guid: 1cf049c2cd99e5d798e785b861979539, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -94.519684
+      value: 40.6
       objectReference: {fileID: 0}
     - target: {fileID: 5707842240414883190, guid: 1cf049c2cd99e5d798e785b861979539, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.7
+      value: 25.4
       objectReference: {fileID: 0}
     - target: {fileID: 5707842240414883190, guid: 1cf049c2cd99e5d798e785b861979539, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8121,11 +8121,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 585019988195136976, guid: 67a07882746014b7eb4717d69e769ea0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41.53
+      value: -119
       objectReference: {fileID: 0}
     - target: {fileID: 585019988195136976, guid: 67a07882746014b7eb4717d69e769ea0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.47
+      value: 12.6
       objectReference: {fileID: 0}
     - target: {fileID: 585019988195136976, guid: 67a07882746014b7eb4717d69e769ea0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9542,7 +9542,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6849953543965657205}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
