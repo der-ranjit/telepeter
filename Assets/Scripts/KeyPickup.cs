@@ -22,10 +22,12 @@ public class KeyPickup : Interactable
             }
             // Close to target -> unlock it!
             if (this.target != null) {
+            // Debug.Log("Key pickup");
                 Vector2 diff = this.transform.position
                     - this.target.transform.position;
                 float dis = diff.magnitude;
-                if (dis < 2) {
+                // Debug.Log("distance to target"+dis);
+                if (dis < 4) {
                     this.carrier = null;
                     this.target.GetComponentInChildren<InteractionTarget>().ReactToInteraction(this.gameObject);
                     this.disabled = true;

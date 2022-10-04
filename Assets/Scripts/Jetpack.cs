@@ -9,7 +9,7 @@ public class Jetpack : Interactable
         this.disabled = true;
         this.GetComponent<BoxCollider2D>().enabled = false;
         GameObject.Destroy(this.gameObject);
-        Debug.Log("Jetpacking!");
+        // Debug.Log("Jetpacking!");
         GameObject.FindGameObjectWithTag("Player").GetComponent<Jump>().enableJetpack();
     }
 }
