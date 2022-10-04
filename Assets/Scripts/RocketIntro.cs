@@ -14,6 +14,8 @@ public class RocketIntro : MonoBehaviour
     public float BackgroundAnimationStart = 2.5f; // Here we start fading out space bg
     public float BackgroundAnimationDuration = 4f; // So long until space bg is fully faded out
 
+    private GameObject rocketParent;
+    private GameObject background;
     private GameObject rocket1;
     private GameObject rocket2;
     private GameObject rocket3;
@@ -21,12 +23,16 @@ public class RocketIntro : MonoBehaviour
     private float initialY;
     public float targetY = 0f;
 
+    private float aniStartTime = -1f;
+
     // Start is called before the first frame update
     void Start()
     {
         rocket1 = UIManager.Instance.FindObjectByName("rocket_initial");
         rocket2 = UIManager.Instance.FindObjectByName("rocket_transformation");
         rocket3 = UIManager.Instance.FindObjectByName("crashed_rocket");
+        rocketParent = rocket1.transform.parent.gameObject;
+        background = UIManager.Instance.FindObjectByName("background_space");
         initialY = this.gameObject.transform.position.y;
         Telepeter.Instance.gameObject.SetActive(false);
         UIManager.Instance.FindObjectByName("PlayerFollowCamera").GetComponent<FollowPlayerCamera>().SetTagToFollow("Rocket");
@@ -36,6 +42,16 @@ public class RocketIntro : MonoBehaviour
     void Update()
     {
         float time = Time.time;
+    
+        if (aniStartTime < 0) {
+            if (GameStateManager.Instance.currentGameLifeState == GameLifeStates.Running) {
+                this.aniStartTime = time;
+            } else {
+                return;
+            }
+        }
+
+        time -= this.aniStartTime;
 
         if (currentPhase <= 3) {
             // Rocket position
@@ -45,7 +61,25 @@ public class RocketIntro : MonoBehaviour
             this.gameObject.transform.position = new Vector3(pos.x, y, pos.z);
 
             // Cam shake
-            // TODO
+            if (currentPhase < 3) {
+                float p5 = time / (Phase1Duration + Phase2Duration);
+                float skewed = p5 * p5;
+                p5 = 0.5f - 0.5f * Mathf.Cos(2f * Mathf.PI * skewed);
+                this.applyCamShake(p5 * 0.4f);
+            } else {
+                this.applyCamShake(0f);
+            }
+
+            // Background Fading
+            float bg_alpha = 1;
+            float t1 = BackgroundAnimationStart;
+            float t2 = t1 + BackgroundAnimationDuration;
+            if (time > t1 && time < t2) {
+                bg_alpha = 1 - (time - t1) / (t2 - t1);
+            } else if (time >= t2) {
+                bg_alpha = 0;
+            }
+            UIManager.Instance.FindObjectByName("background_space").GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,bg_alpha);
         } else {
             return;
         }
@@ -72,7 +106,7 @@ public class RocketIntro : MonoBehaviour
                 float p = Mathf.Min((time - Phase1Duration) / RotationDuration, 1);
                 float smoothed = 0.5f - 0.5f * Mathf.Cos(Mathf.PI * p);
                 float rotation = smoothed * 360;
-                this.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotation));
+                UIManager.Instance.FindObjectByName("rocketStuff").transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotation));
             }
         } else if (currentPhase == 3) {
             if (time > Phase1Duration + Phase2Duration + Phase3Duration) {
@@ -84,5 +118,16 @@ public class RocketIntro : MonoBehaviour
                 // Update phase 3
             }
         }
+    }
+
+    public void applyCamShake(float force = 1f) {
+        this.applyElementShake(rocketParent, force);
+        this.applyElementShake(background, force * 0.3f);
+    }
+
+    public void applyElementShake(GameObject obj, float force = 1) {
+        float dx = force * Random.Range(-1f, 1f);
+        float dy = force * Random.Range(-1f, 1f);
+        obj.transform.localPosition = new Vector3(dx, dy, 0f);
     }
 }
