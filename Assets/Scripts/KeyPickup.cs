@@ -26,12 +26,7 @@ public class KeyPickup : Interactable
                 Vector2 diff = this.transform.position
                     - this.target.transform.position;
                 float dis = diff.magnitude;
-<<<<<<< HEAD
-                // Debug.Log("distance to target"+dis);
-                if (dis < 4) {
-=======
                 if (dis < 5) {
->>>>>>> 29d00adb8caebc567caeefc5a13d74a182f2fc5f
                     this.carrier = null;
                     this.target.GetComponentInChildren<InteractionTarget>().ReactToInteraction(this.gameObject);
                     this.disabled = true;
