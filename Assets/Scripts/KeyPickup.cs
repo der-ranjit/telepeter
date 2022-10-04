@@ -22,6 +22,7 @@ public class KeyPickup : Interactable
             }
             // Close to target -> unlock it!
             if (this.target != null) {
+            // Debug.Log("Key pickup");
                 Vector2 diff = this.transform.position
                     - this.target.transform.position;
                 float dis = diff.magnitude;
